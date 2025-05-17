@@ -1,0 +1,33 @@
+<div class="flex flex-col items-center justify-center h-screen bg-gray-100">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form flex flex-col items-center justify-center p-4">
+    <img src="/assets/logo.svg" alt="logo" class=" mb-4" />
+    <h1 class="mt-0 mb-2 text-3xl text-rose-500 font-medium">Sign In</h1>
+
+    <!-- Username field -->
+    <app-form-field class="w-full" [formGroup]="registerForm" controlName="username" label="Username"
+      placeholder="Username" type="text"></app-form-field>
+
+    <!-- FirstName field -->
+    <app-form-field class="w-full" [formGroup]="registerForm" controlName="firstName" label="First Name"
+      placeholder="First Name" type="text"></app-form-field>
+
+    <!-- LastName field -->
+    <app-form-field class="w-full" [formGroup]="registerForm" controlName="lastName" label="Last Name"
+      placeholder="Last Name" type="text"></app-form-field>
+
+    <!-- Password field -->
+    <app-form-field class="w-full" [formGroup]="registerForm" controlName="password" label="Password"
+      placeholder="Password" type="password"></app-form-field>
+
+    <!-- Submit + link -->
+    <div class="w-[100%] flex flex-col mt-4">
+      <app-button label="Sign up" type="submit" [submitting]="submitting" variant="primary"
+        [fullWidth]="true"></app-button>
+      <div class="mt-4 text-sm text-center">
+        Already registered to <b>Flix Flex</b>?
+        <a class="text-rose-500 no-underline ml-1 cursor-pointer" routerLink="/login">Sign in now</a>
+      </div>
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,26 @@
+<div class="flex flex-col items-center justify-center h-screen bg-gray-100">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form flex flex-col items-center justify-center p-4">
+    <img src="/assets/img/logo.svg" alt="logo" class=" mb-4" />
+    <h1 class="mt-0 mb-2 text-3xl text-rose-500 font-medium">Sign In</h1>
+
+    <!-- Username -->
+    <app-form-field class="w-full" [formGroup]="loginForm" controlName="username" label="Username"
+      placeholder="Username" type="text"></app-form-field>
+
+
+    <!-- Password -->
+    <app-form-field class="w-full" [formGroup]="loginForm" controlName="password" label="Password"
+      placeholder="Password" type="password"></app-form-field>
+
+    <!-- Submit + Link -->
+    <div class="w-full flex flex-col mt-4">
+      <app-button label="Sign in" type="submit" [submitting]="submitting" variant="primary"
+        [fullWidth]="true"></app-button>
+
+      <div class="mt-4 text-sm text-center">
+        New to <b>Flix Flex</b>?
+        <a class="text-rose-500 ml-1" routerLink="/register">Sign up now</a>
+      </div>
+    </div>
+  </form>
+</div>

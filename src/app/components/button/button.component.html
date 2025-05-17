@@ -1,0 +1,14 @@
+<button [disabled]="disabled || submitting" [type]="type" [ngClass]="[
+    'px-4 py-2 rounded font-bold cursor-pointer flex items-center justify-center gap-2',
+    variant === 'primary' ? 'bg-rose-500 text-white hover:bg-rose-700' : '',
+    variant === 'secondary' ? 'bg-gray-500 text-white hover:bg-gray-700' : '',
+    variant === 'tertiary' ? 'bg-transparent text-gray-800 hover:bg-gray-200' : '',
+    fullWidth ? 'w-full' : 'w-auto',
+    (disabled || submitting) ? 'opacity-50 cursor-not-allowed' : '',
+    className
+  ]">
+  <ng-container *ngIf="submitting; else labelTpl">
+    <span class="loader border-white w-4 h-4 border-2 border-t-transparent rounded-full animate-spin"></span>
+  </ng-container>
+  <ng-template #labelTpl>{{ label }}</ng-template>
+</button>
