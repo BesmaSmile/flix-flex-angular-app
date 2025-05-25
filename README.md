@@ -1,59 +1,67 @@
-# FlixFlexAngular
+<p align="center">
+  <a href="https://nextjs.org/" target="_blank" style="display: inline-block; margin-right: 20px;">
+    <img src="https://raw.githubusercontent.com/BesmaSmile/flix-flex-angular-app/refs/heads/master/public/assets/img/angular.svg" height="60" alt="Angular Logo" />
+  </a>
+  <a href="https://flix-flex-web-app.vercel.app/movies" target="_blank" style="display: inline-block;">
+    <img src="https://raw.githubusercontent.com/BesmaSmile/flix-flex-angular-app/refs/heads/master/public/assets/img/app-name.svg" height="60" alt="Flix Flex" />
+  </a>
+</p>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+# Flix Flex 🎬
 
-## Development server
+Flix Flex is a clean and modern [Angular](https://angular.dev/) application designed for discovering and browsing movies.
 
-To start a local development server, run:
+## 🔗 Demo
 
-```bash
-ng serve
-```
+👉 [Live Demo](https://flix-flex-angular-app.vercel.app)
+(Username: samara - Password: samara)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🧩 Related Project
 
-## Code scaffolding
+👉 This frontend app connects to the [Flix Flex API (Backend)](https://github.com/BesmaSmile/flix-flex-api)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+## 🚀 Getting Started Locally
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+To run the app locally, follow these steps:
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+1. **Install dependencies**:
 
 ```bash
-ng build
+npm install
+# or
+yarn install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+2. **Start the development server**:
 
 ```bash
-ng test
+npm start
+# or
+yarn start
 ```
 
-## Running end-to-end tests
+Then open [http://localhost:4200](http://localhost:4200) in your browser.
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## 🧱 Built With
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- [**Angular**](https://angular.dev/) – Framework for building client applications
+- [**Angular Material**](https://material.angular.io/) – UI component library
+- [**@ngrx/signals**](https://ngrx.io/) – Signal-based state management
+- [**Tailwind CSS**](https://tailwindcss.com/) – Utility-first CSS framework
+- [**Swiper**](https://swiperjs.com/) – Modern touch slider
+- [**ngx-toastr**](https://www.npmjs.com/package/ngx-toastr) – Toast notifications
+- [**Font Awesome**](https://fontawesome.com/) – Icon library
+- [**Moment.js**](https://momentjs.com/) – Date formatting and manipulation
+- [**Angular Star Rating**](https://www.npmjs.com/package/angular-star-rating) – Star rating component
+- [**RxJS**](https://rxjs.dev/) – Reactive programming library for Angular
+- [**TypeScript**](https://www.typescriptlang.org/) – Superset of JavaScript
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+## 👤 Author
+
+Made with ❤️ by [Besma RABIA CHERIF](https://www.linkedin.com/in/besmarabiacherif/).

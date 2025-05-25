@@ -6,7 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   selector: 'app-root',
   imports: [
     RouterModule,
-    NavbarComponent
+    NavbarComponent,
   ],
   providers: [],
   templateUrl: './app.component.html',
