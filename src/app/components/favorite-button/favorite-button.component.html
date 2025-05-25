@@ -1,0 +1,7 @@
+<button type="button" class="m-[5px_10px] outline-none bg-transparent border-none"
+  (click)="handleFavoriteClick($event)">
+  <i class="text-[25px] text-red-600 cursor-pointer bi" [ngClass]="{
+          'bi-heart-fill': isFavorite(),
+          'bi-heart': !isFavorite()
+        }"></i>
+</button>

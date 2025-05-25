@@ -7,6 +7,8 @@ import { NgIf, NgFor } from '@angular/common';
 import { User, UserStore } from '@/app/stores/user.store';
 import { AuthService } from '@/app/services/auth.service';
 import { UserService } from '@/app/services/user.service';
+import { Observable } from 'rxjs';
+import { FavoriteService } from '@/app/services/favorite.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,9 +18,9 @@ import { UserService } from '@/app/services/user.service';
 })
 export class NavbarComponent {
 
-  readonly isAuthenticated;
+
   readonly user;
-  currentPath: string = '/home';
+  currentPath;
 
   readonly paths = [
     { path: '/home', name: 'Home' },
@@ -32,17 +34,25 @@ export class NavbarComponent {
 
   constructor(
     private authService: AuthService,
+    private userservice: UserService,
+    private favoriteService: FavoriteService,
     private authStore: AuthStore,
-    private userService: UserService,
     private userStore: UserStore,
     private router: Router) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        this.currentPath = event.url;
+        this.currentPath = event.urlAfterRedirects || event.url;
+        this.mode = computed(() => this.currentPath === '/home' ? 'dark' : 'light');
       });
-    this.isAuthenticated = this.authStore.isAuthenticated();
+
     this.user = this.userStore.user;
+    this.currentPath = this.router.url
+
+  }
+
+  get isAuthenticated() {
+    return this.authStore.isAuthenticated();
   }
 
 
@@ -53,6 +63,13 @@ export class NavbarComponent {
 
   logout() {
     this.authService.logout();
+  }
+
+  ngOnInit() {
+    if (this.isAuthenticated) {
+      this.userservice.getProfile().subscribe();
+      this.favoriteService.getFavorites().subscribe();
+    }
   }
 }
 

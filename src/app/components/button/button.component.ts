@@ -14,5 +14,5 @@ export class ButtonComponent {
   @Input() submitting = false;
   @Input() variant: 'primary' | 'secondary' | 'tertiary' = 'primary';
   @Input() fullWidth = false;
-  @Input() className = '';
+  @Input() class = '';
 }

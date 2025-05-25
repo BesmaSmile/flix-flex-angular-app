@@ -1,0 +1,11 @@
+<div class="flex items-center space-x-[1px]">
+  <ng-container *ngFor="let star of fullStars">
+    <i class="bi bi-star-fill text-[#ffd700]" style="font-size: 15px;"></i>
+  </ng-container>
+  <ng-container *ngIf="hasHalfStar">
+    <i class="bi bi-star-half text-[#ffd700]" style="font-size: 15px;"></i>
+  </ng-container>
+  <ng-container *ngFor="let star of emptyStars">
+    <i class="bi bi-star text-[#ffd700]" style="font-size: 15px;"></i>
+  </ng-container>
+</div>

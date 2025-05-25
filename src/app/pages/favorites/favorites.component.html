@@ -1,0 +1,19 @@
+<mat-tab-group>
+  <mat-tab label="Movies">
+    <app-paginated-list [page]="favoriteMovies.page" [totalPages]="favoriteMovies.totalPages" [loading]="loading"
+      [error]="error" (pageChange)="setMoviesPage($event)">
+      <ng-container *ngFor="let movie of favoriteMovies.data">
+        <app-article-card class="m-[10px]" [article]="movie" />
+      </ng-container>
+    </app-paginated-list>
+  </mat-tab>
+  <mat-tab label="TV Shows">
+    <app-paginated-list [page]="favoriteTvShows.page" [totalPages]="favoriteTvShows.totalPages" [loading]="loading"
+      [error]="error" (pageChange)="setTvShowsPage($event)">
+      <ng-container *ngFor="let tvShow of favoriteTvShows.data">
+        <app-article-card class="m-[10px]" [article]="tvShow" />
+      </ng-container>
+    </app-paginated-list>
+  </mat-tab>
+
+</mat-tab-group>

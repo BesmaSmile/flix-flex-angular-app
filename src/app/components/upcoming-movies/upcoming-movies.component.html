@@ -1,0 +1,23 @@
+<div class="upcoming-movies pb-10">
+  <div class="flex flex-col items-center gap-0">
+    <div class="w-10/12 text-red-600 font-light text-xl my-[50px] mb-5">
+      Upcoming...
+    </div>
+
+    <div *ngIf="movies().upcomingMovies.loading ||movies().upcomingMovies.error"
+      class="flex flex-row justify-center gap-0">
+      <div>Loading... </div>
+    </div>
+
+    <div class="w-10/12" *ngIf="movies().upcomingMovies.data.length > 0">
+      <swiper-container slides-per-view="4" speed="500" loop="true" css-mode="true" pagination="true"
+        autoplay-delay="1500" space-between="10">
+        <ng-container *ngFor="let movie of upcomingMovies">
+          <swiper-slide>
+            <app-article-card class="rounded-[10px]" [article]="movie" />
+          </swiper-slide>
+        </ng-container>
+      </swiper-container>
+    </div>
+  </div>
+</div>

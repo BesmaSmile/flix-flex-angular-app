@@ -1,2 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: -100%;
+  }
+}
+
+.animated {
+  animation: 3s linear infinite placeHolderShimmer;
+  background: linear-gradient(to right, #828181 0%, #999898 8%, #828181 50%, #999898 58%, #828181 66%);
+  background-size: 200%;
+
+}
+
+.animated p {
+  background-color: #afaaaa;
+  height: 7px;
+  border-radius: 3px;
+  margin: 4px 0px;
+
+  animation: 3s linear infinite placeHolderShimmer;
+  background: linear-gradient(to right, #afaaaa 0%, #dddddd 8%, #afaaaa 16%, #afaaaa 50%, #dddddd 58%, #afaaaa 66%);
+  background-size: 200%;
+
+  &:nth-child(1) {
+    width: 80%;
+  }
+}

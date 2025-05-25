@@ -1,0 +1,21 @@
+<div class="flex flex-wrap justify-center gap-0 pt-5 pb-5">
+  <div class="w-10/12 mb-5">
+    <div class="flex justify-between items-center gap-0">
+      <div class="font-light text-xl">{{ title }}</div>
+      <div className='flex flex-row list-none'>
+        <mat-paginator [length]=totalPages pageSize="20" [pageIndex]="page - 1"
+          (page)="onPageClick($event)"></mat-paginator>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading || error">
+    <app-article-card-shimmers></app-article-card-shimmers>
+  </div>
+
+  <div class="w-10/12" *ngIf="!loading && !error && totalPages === 0">
+    <ng-content select="[noresult]"></ng-content>
+  </div>
+
+  <ng-content></ng-content>
+</div>

@@ -5,23 +5,16 @@ import { catchError, switchMap, tap } from 'rxjs/operators';
 import { environment } from '@/environments/environment';
 import { ErrorsService } from './errors.service';
 import { MoviesStore } from '@/app/stores/movies.store';
-
-export interface RegisterPayload {
-  firstName: string;
-  lastName: string;
-  username: string;
-  password: string;
-}
+import { ApiService } from './api.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
-  private apiUrl = environment.apiBaseUrl;
 
   constructor(
-    private http: HttpClient,
+    private apiService: ApiService,
     private moviesStore: MoviesStore,
     private errorsService: ErrorsService
   ) { }
@@ -34,18 +27,17 @@ export class MoviesService {
         error: null,
       }
     });
-    return this.http.get(`${this.apiUrl}/movies/upcoming?page=${page}`).pipe(
+    return this.apiService.get(`/movies/upcoming?page=${page}`).pipe(
       tap((res: any) => {
-        if (res?.status === 200) {
-          this.moviesStore.set({
-            upcomingMovies: {
-              loading: false,
-              data: res.data.results,
-              page,
-              totalPages: res.data.total_pages
-            },
-          });
-        }
+
+        this.moviesStore.set({
+          upcomingMovies: {
+            loading: false,
+            data: res.results,
+            page,
+            totalPages: res.total_pages
+          },
+        });
       }),
       catchError((error) => {
         this.moviesStore.set({
@@ -68,18 +60,17 @@ export class MoviesService {
         error: null,
       }
     });
-    return this.http.get(`${this.apiUrl}/movies/popular?page=${page}`).pipe(
+    return this.apiService.get(`/movies/popular?page=${page}`).pipe(
       tap((res: any) => {
-        if (res?.status === 200) {
-          this.moviesStore.set({
-            popularMovies: {
-              loading: false,
-              data: res.data.results,
-              page,
-              totalPages: res.data.total_pages
-            },
-          });
-        }
+        this.moviesStore.set({
+          popularMovies: {
+            loading: false,
+            data: res.results,
+            page,
+            totalPages: res.total_pages
+          },
+        });
+
       }),
       catchError((error) => {
         this.moviesStore.set({
@@ -103,18 +94,16 @@ export class MoviesService {
         error: null,
       }
     });
-    return this.http.get(`${this.apiUrl}/movies/popular?page=${infinitePopularMovies.page + 1}`).pipe(
+    return this.apiService.get(`/movies/popular?page=${infinitePopularMovies.page + 1}`).pipe(
       tap((res: any) => {
-        if (res?.status === 200) {
-          this.moviesStore.set({
-            popularMovies: {
-              loading: false,
-              data: [...infinitePopularMovies.data, ...res.data.results],
-              page: infinitePopularMovies.page + 1,
-              totalPages: res.data.total_pages
-            },
-          });
-        }
+        this.moviesStore.set({
+          popularMovies: {
+            loading: false,
+            data: [...infinitePopularMovies.data, ...res.results],
+            page: infinitePopularMovies.page + 1,
+            totalPages: res.total_pages
+          },
+        });
       }),
       catchError((error) => {
         this.moviesStore.set({
@@ -137,16 +126,14 @@ export class MoviesService {
         error: null,
       }
     });
-    return this.http.get(`${this.apiUrl}/movies/${id}`).pipe(
+    return this.apiService.get(`/movies/${id}`).pipe(
       tap((res: any) => {
-        if (res?.status === 200) {
-          this.moviesStore.set({
-            movieDetails: {
-              loading: false,
-              data: res.data,
-            },
-          });
-        }
+        this.moviesStore.set({
+          movieDetails: {
+            loading: false,
+            data: res,
+          },
+        });
       }),
       catchError((error) => {
         this.moviesStore.set({
@@ -169,18 +156,16 @@ export class MoviesService {
         error: null,
       }
     });
-    return this.http.get(`${this.apiUrl}/movies/search?page=${page}&query=${query}`).pipe(
+    return this.apiService.get(`/movies/search?page=${page}&query=${query}`).pipe(
       tap((res: any) => {
-        if (res?.status === 200) {
-          this.moviesStore.set({
-            moviesSearchResults: {
-              loading: false,
-              data: res.data.results,
-              page,
-              totalPages: res.data.total_pages
-            },
-          });
-        }
+        this.moviesStore.set({
+          moviesSearchResults: {
+            loading: false,
+            data: res.results,
+            page,
+            totalPages: res.total_pages
+          },
+        });
       }),
       catchError((error) => {
         this.moviesStore.set({
